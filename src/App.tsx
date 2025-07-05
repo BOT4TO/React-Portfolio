@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Twitter, Github, Code, Globe, Bot, ExternalLink, Zap, Users, Award, BotIcon,} from 'lucide-react';
 import {Link} from "react-router-dom";
 import SkillCategory from './SkillsPage/skillCategories';
-
 import profileImage from './assets/3.png'; 
 
 
@@ -94,7 +93,7 @@ const Navbar = ({ activeSection, setActiveSection }: { activeSection: string; se
 
 const HomePage = () => {
     return(
-        <div className="fixed 0-top 0-left w-full h-screen flex items-center justify-center px-8">
+        <div className="min-h-screen flex items-center justify-center px-6 py-20">
             <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-8">
                     <div className="space-y-4">
@@ -150,7 +149,7 @@ const HomePage = () => {
 
 const MyWorkPage = () => {
   return (
-    <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen flex items-center justify-center px-6 py-20">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               <span className="bg-gradient-to-r from-red-500 to-purple-500 bg-clip-text text-transparent">About</span> Me {''}
@@ -281,7 +280,7 @@ const TechnologiesPage = () => {
   ];
  
   return (
-    <div className="fixed 0-top 0-left w-full h-screen flex items-center justify-center px-6 py-20">
+    <div className="min-h-screen flex items-center justify-center px-6 py-20">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -382,7 +381,7 @@ const SkillsPage  = () => {
 
 const ProjectPage = () => {
     return (
-    <div className="fixed top-0 left-0  w-full h-screen flex items-center justify-center overflow-hidden bg-transparent px-2">
+    <div className="min-h-screen flex items-center justify-center px-6 py-20">
       <h1 className="text-5xl  md:text-7xl font-extrabold text-white  tracking-wide font-[Poppins]">
        <span className="bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent"> Coming Soon... </span> ⏳  {''}
       </h1>
@@ -394,7 +393,7 @@ const ProjectPage = () => {
   
 const ContactPage = () => {
   return(
-    <div className="fixed 0-top 0-left w-full h-screen flex items-center justify-center px-6">
+    <div className="min-h-screen flex items-center justify-center px-6 py-20">
       <div className="max-w-2xl mx-auto text-center space-y-8">
        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               <span className="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Contact</span> Me {''}
