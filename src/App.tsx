@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Twitter, Github, Code, Globe, Bot, ExternalLink, Zap, Users, Award, BotIcon,} from 'lucide-react';
 import {Link} from "react-router-dom";
 import SkillCategory from './SkillsPage/skillCategories';
-import SkillStats from './SkillsPage/SkillStates';
+
 import profileImage from './assets/3.png'; 
 
 
@@ -36,12 +36,11 @@ const ParticleBackground = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 via-transparent to-blue-900/20"></div>
+     <div className="absolute inset-0 bg-black" />
       {particles.map((particle, index) => (
         <div
           key={index}
-          className="absolute bg-blue-700/70 rounded-full animate-pulse"
+          className="absolute bg-red-400/80 rounded-full animate-pulse"
           style={{
             left: particle.x,
             top: particle.y,
@@ -55,29 +54,33 @@ const ParticleBackground = () => {
 };
 
 const Navbar = ({ activeSection, setActiveSection }: { activeSection: string; setActiveSection: (section: string) => void }) => {
-  const sections = ['Home','About Me', 'Technologies' ,'Skills', 'Projects', 'Contact'];
+  const sections = ['home', 'about', 'technologies', 'skills', 'projects', 'contact'];
 
   return (
-  <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/10 border-b border-white/10 font-[Poppins] ">
-      <div className="max-w-6xl mx-auto px-6 py-4 ">
-        <div className="flex justify-between items-center ">
-          <div className="text-2xl font-extrabold bg-gradient-to-r from-blue-700 to-red-700 bg-clip-text text-transparent">
-            
-          </div>
-          <div className="flex space-x-8 ">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-red/50 border-b font-semibold border-white/10 font-[Poppins]">
+      <div className="max-w-lg mx-auto px-6 py-4">
+        <div className="flex justify-between items-center">
+
+          <div className="flex space-x-8">
             {sections.map((section) => (
               <button
                 key={section}
-                onClick={() => setActiveSection(section)}
+                onClick={() => {
+                  setActiveSection(section);
+                  const el = document.getElementById(section.toLowerCase());
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 capitalize ${
                   activeSection === section
-                    ? 'text-red-6=400'
-                    : 'text-gray-200 hover:text-blue'
+                    ? 'text-red-700'
+                    : 'text-gray-200 hover:text-red-400'
                 }`}
               >
-                {section === 'home' ? 'Home' : section === 'about' ? 'About Me' : section}
+                {section === 'home' ? 'Home' : section === 'about' ? 'About' : section}
                 {activeSection === section && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-red-200 rounded-full "></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 to-blue-500 rounded-full"></div>
                 )}
               </button>
             ))}
@@ -88,6 +91,7 @@ const Navbar = ({ activeSection, setActiveSection }: { activeSection: string; se
   );
 };
 
+
 const HomePage = () => {
     return(
         <div className="fixed 0-top 0-left w-full h-screen flex items-center justify-center px-8">
@@ -96,31 +100,30 @@ const HomePage = () => {
                     <div className="space-y-4">
                         <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
                            Hi, I'm {' '}
-                           <span className="bg-gradient-to-r from-blue-400 to-pink-400 bg-clip-text text-transparent">BOT4TO</span>
+                           <span className="bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent">BOT4TO</span>
                             </h1>
                             <div className="text-2xl md:text-3xl text-gray-500">
-                              <span className="text-blue-500">Front End Developer</span> & {' '}
-                              <span className="text-purple-500">WEB3 Enthusiasts.</span>
+                              <span className="text-blue-600">Front End Developer</span> & {' '}
+                              <span className="text-red-600">WEB3 Enthusiasts.</span>
                             </div>
                             <span className="block bg-gradient-to-r from-blue-400 via-red-600 to-green-400 bg-clip-text text-transparent"></span>
-                            <p className="text-xl text-gray-300 leading-relaxed max-w-lg">
-                                Passionate about creating exceptional web experiences with modern technologies. 
-              Specialized in Web3 integration and building powerful, professionel creator servers discord, and discord bots from scratch.
+                            <p className="text-xl text-gray-400 leading-relaxed max-w-lg">
+                               Hello, I'm Front end web developer with 1year of experience. I have worked on portfolio and websites front projects and create discord bots with their systemes. I take on each new challenges with different energies.
                             </p>
                     </div>
                     <div className="flex space-x-6">
-                        <a href="https://github.com/BOT4TO"  target="_blank" className="group p-3 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:border-blue-400/50 transition-all duration-300 hover:scale-110">
+                        <a href="https://github.com/BOT4TO"  target="_blank" className="group p-3 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:border-purple-500/70 transition-all duration-300 hover:scale-110">
                         <Github className="w-7 h-7 text-gray-300 group-hover:text-purple-700 transition-color"/>
                         </a>
-                        <a href="https://x.com/xBOT4TO" target="_blank" className="group p-3 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:border-blue-400/50 transition-all duration-300 hover:scale-110">
+                        <a href="https://x.com/xBOT4TO" target="_blank" className="group p-3 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:border-blue-500/70 transition-all duration-300 hover:scale-110">
                         <Twitter className="w-7 h-7 text-gray-200 group-hover:text-blue-700 transition-color"/>
                         </a>
-                        <a href="https://discord.com/.bot4to" target='_blank' className="group p-3 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:border-blue-400/50 transition-all duration-300 hover:scale-110">
+                        <a href="https://discord.com/users/1064281848005537872" target='_blank' className="group p-3 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:border-red-500/70 transition-all duration-300 hover:scale-110">
                         <BotIcon className="w-7 h-7 text-gray-200 group-hover:text-red-700 transition-color"/>
                         </a>
                         </div>
                         <div className="flex space-x-5">
-                          <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+                          <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-red-500 text-black text-semibold font-medium rounded-lg hover:from-blue-600 hover:to-red-600 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25">
                            View Projects
                           </button>
                            <button className="px-8 py-3 border border-white/20 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105">
@@ -130,9 +133,9 @@ const HomePage = () => {
                     </div>
                     <div className="flex justify-center lg:justify-end">
                       <div className="relative">
-                        <div className="w-80 h-80 rounded-full bg-gradient-to-br from-blue-700 via-blue-600 to-green-300 p-1 animate-pulse">
+                        <div className="w-96 h-96 rounded-full bg-gradient-to-br from-red-600 via-blue-600 to-red-700 p-1 animate-pulse">
                           <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
-                            <img src={profileImage} alt="Profile" className="w-72 h-72 rounded-full object-cover"/>
+                            <img src={profileImage} alt="Profile" className="w-[22rem] h-[22rem] rounded-full object-cover"/>
                           </div>
                         </div>
                       </div>
@@ -150,16 +153,16 @@ const MyWorkPage = () => {
     <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center px-6 py-12">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">About</span> Me {''}
+              <span className="bg-gradient-to-r from-red-500 to-purple-500 bg-clip-text text-transparent">About</span> Me {''}
            </h2>
         <img
           src={profileImage} 
           alt="Profile"
-          className="w-36 h-36 rounded-full border-6 border-white shadow-lg mx-auto mb-6"
+          className="w-52 h-52 rounded-full border-6 border-white shadow-lg mx-auto mb-6 bg-gradient-to-br from-red-800 via-blue-800 to-red-700 p-1 animate-pulse"
         />
 
-        <div className="w-full border-t border-blue-300 my-6" />
-        <p className="text-gray-200 text-lg leading-relaxed max-w-2xl mx-auto px-4 font-[Poppins]">
+        <div className="w-full border-t border-blue-900 my-6" />
+        <p className="text-gray-200 text-base font-bold leading-relaxed max-w-2xl mx-auto px-4 font-[Poppins]">
           I'm Bot4to, With over 1 year experience of Front End Developement, and 4years of be active in discord , I'm passionate about staying at the forefront of technology, constantly learning and adapting to new frameworks, tools, and methodologies. Whether it's building scalable React applications, or creating custom Discord bots, I bring creativity and technical excellence to every project.
         </p>
       </div>
@@ -282,9 +285,9 @@ const TechnologiesPage = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Technologies</span> I use {''}
+              <span className="bg-gradient-to-r from-red-500 to-purple-500 bg-clip-text text-transparent">Technologies</span> I use {''}
            </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-red-500 to-purple-500 mx-auto rounded-full"></div>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -316,36 +319,36 @@ const SkillsPage  = () => {
     {
       title: 'Front end developer',
       skills: [
-        {name: 'React-Next.JS', level: 60 },
+        {name: 'React,Next.JS', level: 60 },
         {name: 'TypeScript', level: 40 },
-        {name: 'JavaScript', level: 65 },
-        {name: 'HTML&CSS3', level: 93 },
+        {name: 'JavaScript', level: 59 },
+        {name: 'HTML&CSS3', level: 96 },
       ],
     },
     {
       title: 'Other Skills.',
       skills: [
-        {name: 'Editing', level: 14},
-        {name: 'WEB3 Enthusiasts', level: 69},
-        {name: 'Computer Repair', level: 46},
-        {name: 'Design & Photoshop.', level: 17 },
+        {name: 'Editing', level: 11},
+        {name: 'WEB3 Enthusiasts', level: 72},
+        {name: 'Computer Repair', level: 54},
+        {name: 'Design & Photoshop.', level: 10 },
       ],
     },
     {
       title: 'Discord Activities',
       skills: [
-        {name: 'Community Manager & Moderator', level: 85},
-        {name: 'Management Big Servers', level: 90 },
-        {name: 'Developement Bots Discord', level: 85 },
-        {name: 'Available on Discord.', level: 96 },
+        {name: 'Community Manager & Moderator', level: 92},
+        {name: 'Management Big Servers', level: 86 },
+        {name: 'Developement Bots Discord', level: 71 },
+        {name: 'Available on Discord.', level: 98 },
       ],
     }, 
     {
       title: 'Tools & Technologies',
       skills: [
-        {name: 'Github', level: 85},
-        {name: 'Vercel', level: 78},
-        {name: 'Node JS', level: 62},
+        {name: 'Github', level: 78},
+        {name: 'Vercel', level: 81},
+        {name: 'Node JS', level: 69},
         {name: 'Vistual Studio Code', level: 95},
       ],
     },
@@ -356,7 +359,7 @@ const SkillsPage  = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            My <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Skills</span>
+            My <span className="bg-gradient-to-r from-red-500 to-purple-500 bg-clip-text text-transparent">Skills</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
            This about all of my skills with a different technologies and tools.
@@ -372,8 +375,6 @@ const SkillsPage  = () => {
             />
           ))}
         </div>
-
-        <SkillStats />
       </div>
     </section>
   );
@@ -383,7 +384,7 @@ const ProjectPage = () => {
     return (
     <div className="fixed top-0 left-0  w-full h-screen flex items-center justify-center overflow-hidden bg-transparent px-2">
       <h1 className="text-5xl  md:text-7xl font-extrabold text-white  tracking-wide font-[Poppins]">
-       <span className="bg-gradient-to-r from-purple-600 to-blue-300 bg-clip-text text-transparent"> Coming Soon... </span> ⏳  {''}
+       <span className="bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-transparent"> Coming Soon... </span> ⏳  {''}
       </h1>
     </div>
   );
@@ -396,7 +397,7 @@ const ContactPage = () => {
     <div className="fixed 0-top 0-left w-full h-screen flex items-center justify-center px-6">
       <div className="max-w-2xl mx-auto text-center space-y-8">
        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Contact</span> Me {''}
+              <span className="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Contact</span> Me {''}
            </h2>
         <p className="text-xl text-gray-300 mb-12">
           Ready to bring your ideas, Let's discuss to give my ideas.
@@ -418,8 +419,8 @@ const ContactPage = () => {
           </div>
         </div>
         <div className="mt-12">
-          <button className="px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
-                          Start a Project
+          <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-red-500 text-black text-semibold font-medium rounded-lg hover:from-blue-600 hover:to-red-600 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25">
+                          Contact Me
           </button>
         </div>
       </div>
@@ -434,17 +435,17 @@ function App() {
 
   const renderSection = () => {
     switch (activeSection) {
-      case 'Home':
+      case 'home':
         return <HomePage />;
-      case 'About Me':
+      case 'about':
         return<MyWorkPage/>
-      case 'Technologies':
+      case 'technologies':
         return <TechnologiesPage />;    
-      case 'Skills':
+      case 'skills':
         return <SkillsPage />;
-       case 'Projects':
+       case 'projects':
         return<ProjectPage/>  
-      case 'Contact':
+      case 'contact':
         return <ContactPage />;
       default:
         return <HomePage />;
